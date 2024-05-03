@@ -47,12 +47,6 @@ public class SearchSample {
     x2 = (y1 != 10) ^ (z=false);
     System.out.println(x2+", "+y1+", "+z);
 
-    // for(int i=0; i<10 ; ) { // WILL PRODUCE AN INFINITE LOOP
-    //     i = i++;
-    //     System.out.println("Hello World");
-    //     System.out.println(i);
-    //  }
-
      byte a = 40, b = 50;
      byte sum = (byte) (a + b);
      System.out.println(sum);
