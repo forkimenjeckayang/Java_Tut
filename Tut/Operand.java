@@ -54,7 +54,7 @@ public class Operand {
         int z = (int)9l; // cannot convert from long to int directly so we type cast to int
         long t = 192301398193810323L; // removing L will identify as an integer and cannot convert int to long directly 
         int w = (int)1.0;
-        short v = (short)1921222; // too ltrge to be stored as a short so we have aa numeric overflow and it is stored as 20678
+        short v = (short)1921222; // too large to be stored as a short so we have aa numeric overflow and it is stored as 20678
 
         short p = 10; // promoted to int
         short p1 = 3; // promoted to int
