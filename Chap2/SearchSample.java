@@ -1,4 +1,4 @@
-package Tut;
+package Chap2;
 
 public class SearchSample {
     public static void main(String[] args) {

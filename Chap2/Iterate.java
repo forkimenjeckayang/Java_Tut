@@ -1,4 +1,4 @@
-package Tut;
+package Chap2;
 
 public class Iterate {
     public static void main(String[] args) {

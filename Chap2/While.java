@@ -1,4 +1,4 @@
-package Tut;
+package Chap2;
 
 public class While {
     int roomInBelly = 5;
