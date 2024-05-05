@@ -31,7 +31,7 @@ public class WithDateTime {
         LocalDateTime dateTime1 = LocalDateTime.of(2015, Month.JANUARY, 20, 6, 15); // setting date and time with all variables
         LocalDateTime dateTime2 = LocalDateTime.of(date1, time1); // using date and time variables
 
-        //LocalDate d = new LocalDate(); // cannot compile because class has a private contructor, we are forced to use the static method
+        //LocalDate d = new LocalDate(); // cannot compile because class has a private contructor, we are forced to use the static methods
 
         //date and time are immutable like string
         LocalDate date5 = LocalDate.of(2014, Month.JANUARY, 20);

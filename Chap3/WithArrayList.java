@@ -63,7 +63,7 @@ public class WithArrayList {
        intergers1.add(2);
        intergers1.add(10);
        System.out.println("unsorted arraylist: "+intergers1);
-       Collections.sort(intergers1);
+       Collections.sort(intergers1); // we can also sort a list with collections class
        System.out.println("sorted arraylist: "+intergers1);
     }
 }

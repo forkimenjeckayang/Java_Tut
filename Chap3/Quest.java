@@ -1,7 +1,15 @@
 package Chap3;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 public class Quest {
@@ -119,5 +127,86 @@ public class Quest {
         // list.add("two");
         // list.add(7); // compilation error here our Array list if of String and not int
         // for(String s : list) System.out.print(s);
- }
+
+        // ArrayList<Integer> values = new ArrayList<>();
+        // values.add(4); // [4]
+        // System.out.println(values);
+        // values.add(5); // [4, 5]
+        // System.out.println(values);
+        // values.set(1, 6); // replace what is at index 1 and put 6 // [4, 6]
+        // System.out.println(values);
+        // values.remove(0); // [6]
+        // System.out.println(values);
+        // for (Integer v : values) 
+        //   System.out.print(v); // ouputs [6]
+
+        // List<Integer> list = Arrays.asList(10, 4, -1, 5);
+        // Collections.sort(list);
+        // System.out.println(list); // sorted list : [-1, 4, 5, 10]
+        // Integer array[] = list.toArray(new Integer[4]);
+        // System.out.println(array[0]); // -1
+
+        // String [] names = {"Tom", "Dick", "Harry"};
+        // List<String> list = names.asList(); // supposed to be Arrays.asList(names) so compillation error
+        // list.set(0, "Sue");
+        // System.out.println(names[0]);
+
+        // List<String> hex = Arrays.asList("30", "8", "3A","FF");
+        // Collections.sort(hex);
+        // System.out.println(hex);
+        // int x = Collections.binarySearch(hex, "8");
+        // int y = Collections.binarySearch(hex, "3A");
+        // int z = Collections.binarySearch(hex, "4F");
+        // System.out.println(x + " " + y + " " + z); // 2 1 -3
+
+        // List<Integer> ages = new ArrayList<>();
+        // ages.add(Integer.parseInt("5"));
+        // ages.add(Integer.valueOf("6"));
+        // ages.add(7);
+        // System.out.println(ages);
+        // ages.add(null); // at run time this will throw a runtime exception NullPointerException
+        // System.out.println(ages);
+        // for (int age : ages) 
+        //   System.out.print(age);
+
+        // List<String> one = new ArrayList<String>();
+        // one.add("abc");
+        // List<String> two = new ArrayList<>();
+        // two.add("abc");
+        // if (one == two)
+        // System.out.println("A");
+        // else if (one.equals(two))
+        // System.out.println("B"); //prints B becasue contents of one and two are thesame
+        // else
+        // System.out.println("C");
+
+        // LocalDate date = LocalDate.of(2014, Calendar.JUNE, 21); // calender.june is May since it starts keeping count from 0 as January
+        // LocalDate date2 = LocalDate.of(2014, Month.JUNE, 21); // month.june is June since it keep counts from 1 as January
+        // System.out.println(date2);
+
+        // LocalDate date = LocalDate.parse("2018-04-30", DateTimeFormatter.ISO_LOCAL_DATE);
+        // date.plusDays(2); // won't take effect since it is not stored in a variable note datetime is immutable
+        // date.plusHours(3); // won't compile since in LocalDate we do not have time
+
+        // LocalDate date = LocalDate.of(2018, Month.APRIL, 40); // runtime error , invalid day of month
+        // System.out.println(date.getYear() + " " + date.getMonth() + " "+ date.getDayOfMonth());
+
+        // LocalDate date = LocalDate.of(2018, Month.APRIL, 30);
+        // date.plusDays(2); // no effect taken on the days
+        // date.plusYears(3); // no effect taken on the years
+        // System.out.println(date.getYear() + " " + date.getMonth() + " " + date.getDayOfMonth()); // outputs same result 2018 APRIL 2018
+
+        // LocalDateTime d = LocalDateTime.of(2015, 5, 10, 11, 22, 33);
+        // Period p = Period.of(1, 2, 3); // 1 years 2 months 3 days
+        // d = d.minus(p); // returns 2014, 3, 7, 11, 22, 33
+        // DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+        // System.out.println(d.format(f)); // returns  time since we formated only time so it retuns only the time 11:22 AM. and not the date
+
+        // LocalDateTime d = LocalDateTime.of(2015, 5, 10, 11, 22, 33);
+        // Period p = Period.ofDays(1).ofYears(2); // results to period of 2 years only
+        // d = d.minus(p); // retuns 2013, 5, 10, 11, 22, 33
+        // DateTimeFormatter f = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+        // // 5/10/13 11:22 AM
+        // System.out.println(f.format(d)); // since we formated in date and time it will return date and time and month comes first
+    }
 }
