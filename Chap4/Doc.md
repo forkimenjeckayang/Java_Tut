@@ -236,3 +236,4 @@ NOTE: Constructors can be called only with the new keyword.
     // lambda expression
     (x, y) -> x + y   
 ```
+- A lambda expression is like a method that you can pass as if it were a variable
