@@ -158,3 +158,6 @@ Here we have a problem. Java is happy to convert the int 4 to a long 4 or an Int
 It cannot handle converting in two steps to a long and then to a Long. If we had public
 static void play(Object o) { }, it would match because only one conversion would be
 necessary: from int to Integer. An Integer is an Object
+
+## Constructor
+- A constructor is a special method that matches the name of the class and has no return type.
