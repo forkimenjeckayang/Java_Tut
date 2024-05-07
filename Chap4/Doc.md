@@ -161,3 +161,78 @@ necessary: from int to Integer. An Integer is an Object
 
 ## Constructor
 - A constructor is a special method that matches the name of the class and has no return type.
+- Constructors are used when creating a new object. This process is called instantiation because it creates a new instance of the class. A constructor is called when we write new followed by the name of the class we want to instantiate. For example:
+*new Bunny()*
+- A constructor is typically used to initialize instance variables. The *this* keyword tells Java you want to reference an instance variable.
+- Without coding the constructor, java automaticlly creates one for you with no paramaters ie *NoArgsConstructor* which is the default constructor which has an empty paramter list and an empty body 
+- Having a private constructor in a class tells the compiler not to provide a default no-argument constructor. It also prevents other classes from instantiating the class. This is useful when a class only has static methods or the class wants to control all calls to create new instances of itself.
+- You can have multiple constructors in the same class as long as they have different method signatures
+NOTE: Constructors can be called only with the new keyword.
+- If we want one of our constructors to call the otehr, we would call with a new keyword withion the first constructor but it will not do ewhat we want
+    ```java
+    public Hamster(int weight) {
+        new Hamster(weight, "brown"); // Compiles but does not do what we want because it creates the object with first constructor and discards the new object
+    }
+
+    ```
+ - The constructor is part of the initialization process, so it is allowed to assign final instance variables in it. By the time the constructor completes, all final instance variables must have been set.
+
+  ```java
+  public class MouseHouse {
+    private final int volume;
+    private final String name = "The Mouse House";
+    public MouseHouse(int length, int width, int height) {
+       volume = length * width * height;
+    }
+  }
+  ```
+- ORDER OF INITIALIZATION IN A CLASS
+    1.If there is a superclass, initialize it first . For now, just say “no superclass” and go on to the next rule.
+    2.Static variable declarations and static initializers in the order they appear in the file.
+    3.Instance variable declarations and instance initializers in the order they appear in the file.
+    4.The constructor.
+  ```java
+     public class InitializationOrderSimple {
+        private String name = "Torchie"; // initialized fouth
+        { System.out.println(name); } // initialized fith so outputs Torchie
+        private static int COUNT = 0; // initialized first
+        static { System.out.println(COUNT); } // initialized second so prints out 0
+        static { COUNT += 10; System.out.println(COUNT); } // initialized third so print outs 10
+        public InitializationOrderSimple() { //initialized last so outputs constructor
+            System.out.println("constructor");
+    } }
+    public class CallInitializationOrderSimple {
+        public static void main(String[] args){
+            SYtem.out.println("read the construct");
+            IInitializationOrderSimple init = new InitializationOrderSimple(); // the output is 0 10 torchie constructor and rule 1 not applied because of no super class
+        }
+    }
+  ```
+- The four rules apply if an object is instanciated and also,  if the class is reffered to without a new call, only rule one and 2 apply. The other two wait untill there is   code   to instanciate the object
+- When all the statics have been initialized the main() method can run.
+
+
+## Encapsulating Data
+- Encapsulation means we set up the class so only methods in the class with the variables can refer to the instance variables. Callers are required to use these methods.
+- Naming convention for *JavaBean*
+  * properties are private (instance variables)
+  * setter methods begin  with *set* e.g setName
+  * getter methods begin with *get* except for Boolean methods which we use *is* e.g getName, isHappy
+- Encapsulating data is helpful because it prevents callers from making uncontrolled changes to your class. Another common technique is making classes immutable so they cannot be changed at all.
+- One step in making a class immutable is to omit the setters. But wait: we still want the caller to be able to specify the initial value—we just don’t want it to change after the object is created. Constructors to the rescue!
+- Immutable is only measured after the object is constructed. Immutable classes are allowed to have values. They just can't change after instantiation.
+- Be careful with the return types too. DO not give a return type which is mutable thogh not using setters.
+
+## Simple Lambdas
+- Functional programming is a way of writing code more declaratively. You specify what you want to do rather than dealing with the state of objects
+- Functional programming uses lambda expressions to write code. A lambda expression is a block of code that gets passed around.
+- Think of a lambda expression as a "mini-function" that you define on the spot
+  * Normal function
+```java
+    public int addNumbers(int x, int y) {
+      return x + y;
+    }
+
+    // lambda expression
+    (x, y) -> x + y   
+```
