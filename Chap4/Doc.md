@@ -3,7 +3,7 @@
 * public -The method can be called from any class.(anywhere)
 * private -The method can only be called from within the same class.
 * protected -The method can only be called from classes in the same package && subclasses.
-* Default (Package Private) Access -The method can only be called from classes in the same package. 
+* Default (*Package Private*) Access -The method can only be called from classes in the same package. 
 This one is tricky because there is no keyword for default access. You simply omit the access modifier. When no access modifier is used then it is *default*
 You can have zero or more specifiers in a method declaration.
  ## Specifiers
@@ -88,13 +88,13 @@ Static methods don’t require an instance of the class. They are shared among a
 You can use the Class name directly to access static members of the class without an instance
 Static methods require static variables
 
--*Non static method can call a static method*
--*Static method cannot call a non static method*
--*A static variable cannot access an instance varibale* 
+- ## *Non static method can call a static method*
+- ## *Static method cannot call a non static method*
+- ## *A static variable cannot access an instance varibale* 
 -Other static variables are meant to never change during the program. This type of variable is known as a constant. It uses the final modifier to ensure the variable never changes.
 
 ## Static imports 
-We use static imports to import static members of a class and not classes by themselves
+We use static imports to import static members of a class and not classes by themselves ie *static methods* and *static instance variables*
 
 import static java.util.Arrays; // DOES NOT COMPILE
 import static java.util.Arrays.asList;
@@ -186,7 +186,7 @@ NOTE: Constructors can be called only with the new keyword.
     }
   }
   ```
-- ORDER OF INITIALIZATION IN A CLASS
+- ### ORDER OF INITIALIZATION IN A CLASS
     1.If there is a superclass, initialize it first . For now, just say “no superclass” and go on to the next rule.
     2.Static variable declarations and static initializers in the order they appear in the file.
     3.Instance variable declarations and instance initializers in the order they appear in the file.
@@ -237,3 +237,31 @@ NOTE: Constructors can be called only with the new keyword.
     (x, y) -> x + y   
 ```
 - A lambda expression is like a method that you can pass as if it were a variable
+Let’s look at some examples of valid lambdas. Pretend that there are valid interfaces that
+can consume a lambda with zero, one, or two String parameters.
+```java
+ print(() -> true); // 0 parameters
+ print(a -> a.startsWith("test")); // 1 parameter
+ print((String a) -> a.startsWith("test")); // 1 parameter
+ print((a, b) -> a.startsWith("test"));
+ print((String a, String b) -> a.startsWith("test")); // 2 parameters
+```
+  Notice that all of these examples have parentheses around the parameter list except the one that takes only one parameter and doesn’t specify the type. Line 3 takes 0 parameters and always returns the Boolean true. Line 4 takes one parameter and calls a method on it, returning the result. Line 5 does the same except that it explicitly defi nes the type of the variable. Lines 6 and 7 take two parameters and ignore one of them—there isn’t a rule that says you must use all defined parameters
+```java
+    print(a, b -> a.startsWith("test")); // DOES NOT COMPILE
+    print(a -> { a.startsWith("test"); }); // DOES NOT COMPILE
+    print(a -> { return a.startsWith("test") }); // DOES NOT COMPILE
+```
+  The fi rst line needs parentheses around the parameter list. Remember that the parentheses are only optional when there is one parameter and it doesn’t have a type declared. The second line is missing the return keyword. The last line is missing the semicolon
+
+- Since Java doesn’t allow us to redeclare a local variable, the following is an issue:
+*(a, b) -> { int a = 0; return 5;} // DOES NOT COMPILE*
+We tried to redeclare a, which is not allowed. By contrast, the following line is okay because it uses a different variable name:
+*(a, b) -> { int c = 0; return 5;}  //COMPILES*
+
+- Lambdas work with interfaces that have only one method. These are called functional interfaces—interfaces that can be used with functional programming
+- The use predicate interface for conditional check. So having a method which which return a bolean value we can use a predicate interface
+  It is a Predicte interface of generic type and has a method called test() which takes in a single parameter of any-type and returns a boolean value
+- So without lambda expressions, we would first create a class to implememnt the interface we need , after which that class will be define how to implememt the method of the interface. IN our main method we create  a new object of the interface using the  class which impemented the interface and then we can call the method and use.
+- With lambdas we use the interface directly
+
