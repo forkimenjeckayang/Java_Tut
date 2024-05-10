@@ -1,8 +1,31 @@
 package Chap4.Quest;
 
+import java.util.function.Predicate;
+
 public class Main {
+    int age ;
     public static void main(String[] args) {
         Main m = new Main();
+
+        // m.age = 1;
+        // check(m, p -> p.age < 5);
+
+        // int value = 9;
+        // long result = square(value);
+        // System.out.println(value);
+        // System.out.println(result);
+
+        // short s = 123;
+        // m.print(s);
+        // m.print(true);
+        // m.print(6.789);
+
+        // StringBuilder s1 = new StringBuilder("s1");
+        // StringBuilder s2 = new StringBuilder("s2");
+        // StringBuilder s3 = work(s1, s2);
+        // System.out.println("s1 = " + s1);
+        // System.out.println("s2 = " + s2);
+        // System.out.println("s3 = " + s3);
         
     }
      //q1
@@ -85,8 +108,51 @@ public class Main {
     //Q10 
     // swing swing 10 B
     
-    //Q11 
+    //Q11 B E
+
+    //Q12 D
+
+    //Q13 E
+
+    //Q15 E
+    // public void print(byte x) {
+    //     System.out.print("byte");
+    // }
+    // public void print(int x) {
+    //     System.out.print("int");
+    // }
+    // public void print(float x) {
+    //     System.out.print("float");
+    // }
+    // public void print(Object x) {
+    //     System.out.print("Object");
+    // }
+
+    //16 B
+    // public static long square(int x) {
+    //     long y = x * (long) x;
+    //     return y;
+    //     }
+
+    //17
+    // public static StringBuilder work(StringBuilder a,StringBuilder b) {
+    //     a = new StringBuilder("a");
+    //     b.append("b");
+    //     return a;
+    // }// output s1 = s1
+    //            s2 = s2b
+    //            s3 = a
+
+    //18
+    //19
+    //20
+    //21
+    //26
+    // private static void check(Main panda, Predicate<Main> pred) {
+    //     String result = pred.test(panda) ? "match" : "not match";
+    //     System.out.print(result);
+    // }
+
+    //27 
     
-
-
 }

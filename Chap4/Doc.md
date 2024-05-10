@@ -3,7 +3,7 @@
 * public -The method can be called from any class.(anywhere)
 * private -The method can only be called from within the same class.
 * protected -The method can only be called from classes in the same package && subclasses.
-* Default (*Package Private*) Access -The method can only be called from classes in the same package. 
+* Default (Package Private) Access -The method can only be called from classes in the same package. 
 This one is tricky because there is no keyword for default access. You simply omit the access modifier. When no access modifier is used then it is *default*
 You can have zero or more specifiers in a method declaration.
  ## Specifiers
@@ -88,13 +88,13 @@ Static methods don’t require an instance of the class. They are shared among a
 You can use the Class name directly to access static members of the class without an instance
 Static methods require static variables
 
-- ## *Non static method can call a static method*
-- ## *Static method cannot call a non static method*
-- ## *A static variable cannot access an instance varibale* 
+-*Non static method can call a static method*
+-*Static method cannot call a non static method*
+-*A static variable cannot access an instance varibale* 
 -Other static variables are meant to never change during the program. This type of variable is known as a constant. It uses the final modifier to ensure the variable never changes.
 
 ## Static imports 
-We use static imports to import static members of a class and not classes by themselves ie *static methods* and *static instance variables*
+We use static imports to import static members of a class and not classes by themselves
 
 import static java.util.Arrays; // DOES NOT COMPILE
 import static java.util.Arrays.asList;
@@ -139,7 +139,7 @@ p.fly(123);
 p.fly(123L);
 } }
 
-The answer is int long. The fi rst call passes an int and sees an exact match. The second call passes a long and also sees an exact match. If we comment out the overloaded method with the int parameter list, the output becomes long long. Java has no problem calling a larger primitive. However, it will not do so unless a better match is not found. Note that Java can only accept wider types. An int can be passed to a method taking a long parameter. Java will not automatically convert to a narrower type. If you want to pass a long to a method taking an int parameter, you have to add a cast to explicitly say narrowing is okay.
+The answer is int long. The first call passes an int and sees an exact match. The second call passes a long and also sees an exact match. If we comment out the overloaded method with the int parameter list, the output becomes long long. Java has no problem calling a larger primitive. However, it will not do so unless a better match is not found. Note that Java can only accept wider types. An int can be passed to a method taking a long parameter. Java will not automatically convert to a narrower type. If you want to pass a long to a method taking an int parameter, you have to add a cast to explicitly say narrowing is okay.
  * ORDER OVERLOAD METHOD FOLLOWS
 - Exact match by type - public String glide(int i, int j) {}
 - Larger primitive type - public String glide(long i, long j) {}
@@ -161,107 +161,3 @@ necessary: from int to Integer. An Integer is an Object
 
 ## Constructor
 - A constructor is a special method that matches the name of the class and has no return type.
-- Constructors are used when creating a new object. This process is called instantiation because it creates a new instance of the class. A constructor is called when we write new followed by the name of the class we want to instantiate. For example:
-*new Bunny()*
-- A constructor is typically used to initialize instance variables. The *this* keyword tells Java you want to reference an instance variable.
-- Without coding the constructor, java automaticlly creates one for you with no paramaters ie *NoArgsConstructor* which is the default constructor which has an empty paramter list and an empty body 
-- Having a private constructor in a class tells the compiler not to provide a default no-argument constructor. It also prevents other classes from instantiating the class. This is useful when a class only has static methods or the class wants to control all calls to create new instances of itself.
-- You can have multiple constructors in the same class as long as they have different method signatures
-NOTE: Constructors can be called only with the new keyword.
-- If we want one of our constructors to call the otehr, we would call with a new keyword withion the first constructor but it will not do ewhat we want
-    ```java
-    public Hamster(int weight) {
-        new Hamster(weight, "brown"); // Compiles but does not do what we want because it creates the object with first constructor and discards the new object
-    }
-
-    ```
- - The constructor is part of the initialization process, so it is allowed to assign final instance variables in it. By the time the constructor completes, all final instance variables must have been set.
-
-  ```java
-  public class MouseHouse {
-    private final int volume;
-    private final String name = "The Mouse House";
-    public MouseHouse(int length, int width, int height) {
-       volume = length * width * height;
-    }
-  }
-  ```
-- ### ORDER OF INITIALIZATION IN A CLASS
-    1.If there is a superclass, initialize it first . For now, just say “no superclass” and go on to the next rule.
-    2.Static variable declarations and static initializers in the order they appear in the file.
-    3.Instance variable declarations and instance initializers in the order they appear in the file.
-    4.The constructor.
-  ```java
-     public class InitializationOrderSimple {
-        private String name = "Torchie"; // initialized fouth
-        { System.out.println(name); } // initialized fith so outputs Torchie
-        private static int COUNT = 0; // initialized first
-        static { System.out.println(COUNT); } // initialized second so prints out 0
-        static { COUNT += 10; System.out.println(COUNT); } // initialized third so print outs 10
-        public InitializationOrderSimple() { //initialized last so outputs constructor
-            System.out.println("constructor");
-    } }
-    public class CallInitializationOrderSimple {
-        public static void main(String[] args){
-            SYtem.out.println("read the construct");
-            IInitializationOrderSimple init = new InitializationOrderSimple(); // the output is 0 10 torchie constructor and rule 1 not applied because of no super class
-        }
-    }
-  ```
-- The four rules apply if an object is instanciated and also,  if the class is reffered to without a new call, only rule one and 2 apply. The other two wait untill there is   code   to instanciate the object
-- When all the statics have been initialized the main() method can run.
-
-
-## Encapsulating Data
-- Encapsulation means we set up the class so only methods in the class with the variables can refer to the instance variables. Callers are required to use these methods.
-- Naming convention for *JavaBean*
-  * properties are private (instance variables)
-  * setter methods begin  with *set* e.g setName
-  * getter methods begin with *get* except for Boolean methods which we use *is* e.g getName, isHappy
-- Encapsulating data is helpful because it prevents callers from making uncontrolled changes to your class. Another common technique is making classes immutable so they cannot be changed at all.
-- One step in making a class immutable is to omit the setters. But wait: we still want the caller to be able to specify the initial value—we just don’t want it to change after the object is created. Constructors to the rescue!
-- Immutable is only measured after the object is constructed. Immutable classes are allowed to have values. They just can't change after instantiation.
-- Be careful with the return types too. DO not give a return type which is mutable thogh not using setters.
-
-## Simple Lambdas
-- Functional programming is a way of writing code more declaratively. You specify what you want to do rather than dealing with the state of objects
-- Functional programming uses lambda expressions to write code. A lambda expression is a block of code that gets passed around.
-- Think of a lambda expression as a "mini-function" that you define on the spot
-  * Normal function
-```java
-    public int addNumbers(int x, int y) {
-      return x + y;
-    }
-
-    // lambda expression
-    (x, y) -> x + y   
-```
-- A lambda expression is like a method that you can pass as if it were a variable
-Let’s look at some examples of valid lambdas. Pretend that there are valid interfaces that
-can consume a lambda with zero, one, or two String parameters.
-```java
- print(() -> true); // 0 parameters
- print(a -> a.startsWith("test")); // 1 parameter
- print((String a) -> a.startsWith("test")); // 1 parameter
- print((a, b) -> a.startsWith("test"));
- print((String a, String b) -> a.startsWith("test")); // 2 parameters
-```
-  Notice that all of these examples have parentheses around the parameter list except the one that takes only one parameter and doesn’t specify the type. Line 3 takes 0 parameters and always returns the Boolean true. Line 4 takes one parameter and calls a method on it, returning the result. Line 5 does the same except that it explicitly defi nes the type of the variable. Lines 6 and 7 take two parameters and ignore one of them—there isn’t a rule that says you must use all defined parameters
-```java
-    print(a, b -> a.startsWith("test")); // DOES NOT COMPILE
-    print(a -> { a.startsWith("test"); }); // DOES NOT COMPILE
-    print(a -> { return a.startsWith("test") }); // DOES NOT COMPILE
-```
-  The fi rst line needs parentheses around the parameter list. Remember that the parentheses are only optional when there is one parameter and it doesn’t have a type declared. The second line is missing the return keyword. The last line is missing the semicolon
-
-- Since Java doesn’t allow us to redeclare a local variable, the following is an issue:
-*(a, b) -> { int a = 0; return 5;} // DOES NOT COMPILE*
-We tried to redeclare a, which is not allowed. By contrast, the following line is okay because it uses a different variable name:
-*(a, b) -> { int c = 0; return 5;}  //COMPILES*
-
-- Lambdas work with interfaces that have only one method. These are called functional interfaces—interfaces that can be used with functional programming
-- The use predicate interface for conditional check. So having a method which which return a bolean value we can use a predicate interface
-  It is a Predicte interface of generic type and has a method called test() which takes in a single parameter of any-type and returns a boolean value
-- So without lambda expressions, we would first create a class to implememnt the interface we need , after which that class will be define how to implememt the method of the interface. IN our main method we create  a new object of the interface using the  class which impemented the interface and then we can call the method and use.
-- With lambdas we use the interface directly
-
