@@ -1,4 +1,4 @@
-package Chap5;
+package Chap5.Inheritance;
 
 public class InherrittingVariables2 extends InherrittingVariables{
     //hidding variables tailLength

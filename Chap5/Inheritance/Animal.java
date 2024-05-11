@@ -1,4 +1,4 @@
-package Chap5;
+package Chap5.Inheritance;
 
 public class Animal {
     private int age; // not accessible from subclass or any other place

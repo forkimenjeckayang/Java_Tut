@@ -1,4 +1,4 @@
-package Chap5;
+package Chap5.Inheritance;
 
 public class StaticOveride2 extends StaticOveride {
     public static void eat() {
@@ -29,5 +29,5 @@ public class StaticOveride2 extends StaticOveride {
     //     return false;
     // }
 
-    
+
 }

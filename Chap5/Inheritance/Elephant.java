@@ -1,4 +1,4 @@
-package Chap5;
+package Chap5.Inheritance;
 
 public class Elephant extends Mamal{
     /*
@@ -35,5 +35,5 @@ public class Elephant extends Mamal{
      * constructor via an explicit call of the super() command.
      */
 
-     
+
 }

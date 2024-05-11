@@ -194,3 +194,19 @@ return 2;
 - If you’re referencing the variable from within the parent class, the variabledefined in the parent class is used. Alternatively, if you’re referencing the variable from within a child class, the variable defi ned in the child class is used. Likewise, you can reference the parent value of the variable with an explicit use of the super keyword.
 - We do not overide a member variable but instead hide it in an inherited class
 ## NOTE: Although Java allows you to hide a variable deﬁned in a parent class with one deﬁned in a child class, it is considered an extremely poor coding practice. Hiding variables makes the code very confusing and difﬁcult to read, especially if you start modifying the value of the variable in both the parent and child methods, since it may not be clear which variable you’re updating.
+
+
+## Abstract Class Deﬁnition Rules:
+
+1. Abstract classes cannot be instantiated directly.
+2. Abstract classes may be defined with any number, including zero, of abstract and non-abstract methods.
+3. Abstract classes may not be marked as private or final.
+4. An abstract class that extends another abstract class inherits all of its abstract methods as its own abstract methods.
+5. The first concrete class that extends an abstract class must provide an implementation for all of the inherited abstract methods.
+
+## Abstract Method Deﬁnition Rules:
+
+1. Abstract methods may only be defined in abstract classes.
+2. Abstract methods may not be declared private or final.
+3. Abstract methods must not provide a method body/implementation in the abstract class for which is it declared.
+4. Implementing an abstract method in a subclass follows the same rules for overriding a method. For example, the name and signature must be the same, and the visibility of the method in the subclass must be at least as accessible as the method in the parent class.

@@ -1,4 +1,4 @@
-package Chap5;
+package Chap5.Inheritance;
 
 public class Mamal {
     public Mamal(int age) {

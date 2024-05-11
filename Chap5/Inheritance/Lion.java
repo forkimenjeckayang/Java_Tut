@@ -1,4 +1,4 @@
-package Chap5;
+package Chap5.Inheritance;
 
 public class Lion extends Animal {
     public static void main(String[] args) {
