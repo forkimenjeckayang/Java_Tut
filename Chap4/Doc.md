@@ -3,7 +3,7 @@
 * public -The method can be called from any class.(anywhere)
 * private -The method can only be called from within the same class.
 * protected -The method can only be called from classes in the same package && subclasses.
-* Default (Package Private) Access -The method can only be called from classes in the same package. 
+* Default (Package Private) Access -The method can only be called from classes in the same package or subclasses.
 This one is tricky because there is no keyword for default access. You simply omit the access modifier. When no access modifier is used then it is *default*
 You can have zero or more specifiers in a method declaration.
  ## Specifiers
