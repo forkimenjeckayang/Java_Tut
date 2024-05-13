@@ -1,5 +1,5 @@
 package Chap5.interfacess;
 
-public class MultInterface {
-    
+public interface MultInterface {
+    public int getTailLength();
 }

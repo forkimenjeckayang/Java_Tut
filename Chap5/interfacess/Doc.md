@@ -166,7 +166,7 @@ System.out.println(new Cat().getSpeed());
 * You can see that having a class that implements or inherits two duplicate default methods forces the class to implement a new version of the method, or the code will not compile. This rule holds true even for abstract classes that implement multiple interfaces, becausethe default method could be called in a concrete method within the abstract class. 
 
 ## Static Interface Methods
-A static method defi ned in an interface is not inherited in any classes that implement the interface.
+A static method defined in an interface is not inherited in any classes that implement the interface.
 Here are the static interface method rules you need to be familiar with:
 
 1. Like all methods in an interface, a static method is assumed to be public and will not
